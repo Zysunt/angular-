@@ -1,0 +1,301 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+// .tab-button:nth-of-type(1){
+// padding-right: 30px !important;
+// }
+// .tab-button:nth-of-type(3){
+//     padding-left: 30px !important;
+//     }
+    .show-tabbar{
+        background: white !important;
+    }
+    .tabs-md[tabsLayout=icon-hide] .tab-button, .tabs-md[tabsLayout=title-hide] .tab-button, .tabs-md .tab-button.icon-only, .tabs-md .tab-button.has-title-only{
+      padding: 0;
+    }
+    .tab-button:nth-of-type(2){
+    position: relative !important;
+    top: -28px !important;
+        }
+    // 更换tabs图标
+    $tabImageName: 'tab1' 'tab2' 'tab3';  
+ 
+  //for ios  
+  .ion-ios-tab-#{nth($tabImageName, 1)} {  
+    // @extend .ion-tab-icon-base;
+    content: url("../assets/imgs/mine/shouye_org.png");
+  }  
+  .ion-ios-tab-#{nth($tabImageName, 1)}-outline {  
+    // @extend .ion-tab-icon-base;
+    content: url("../assets/imgs/mine/shouye_gray.png");  
+  }  
+  .ion-ios-tab-#{nth($tabImageName, 2)} {  
+    // @extend .ion-tab-icon-base;
+    content: url("../assets/imgs/home/tianjia_org.png");
+  }  
+  .ion-ios-tab-#{nth($tabImageName, 2)}-outline {  
+    // @extend .ion-tab-icon-base;
+    content: url("../assets/imgs/home/tianjia_org.png");  
+  }  
+  .ion-ios-tab-#{nth($tabImageName, 3)} {  
+    // @extend .ion-tab-icon-base;
+    content: url("../assets/imgs/mine/wo_org.png");
+  }  
+  .ion-ios-tab-#{nth($tabImageName, 3)}-outline {  
+    // @extend .ion-tab-icon-base;
+    content: url("../assets/imgs/mine/wo_gray.png");  
+  }
+  
+  // for android  
+  .tabs-md .tab-button[aria-selected=true] {  
+    .ion-md-tab-#{nth($tabImageName, 1)} {  
+      content: url("../assets/imgs/mine/shouye_org.png");  
+    }  
+  }  
+  .tabs-md .tab-button[aria-selected=false] {  
+    .ion-md-tab-#{nth($tabImageName, 1)} {
+      content: url("../assets/imgs/mine/shouye_gray.png");  
+    }  
+  }  
+  .tabs-md .tab-button[aria-selected=true] {  
+    .ion-md-tab-#{nth($tabImageName, 2)} {  
+      content: url("../assets/imgs/home/tianjia_org.png");  
+    }  
+  }  
+  .tabs-md .tab-button[aria-selected=false] {  
+    .ion-md-tab-#{nth($tabImageName,2)} {
+      content: url("../assets/imgs/home/tianjia_org.png");  
+    }  
+  }  
+  .tabs-md .tab-button[aria-selected=true] {  
+    .ion-md-tab-#{nth($tabImageName, 3)} {  
+      content: url("../assets/imgs/mine/wo_org.png");  
+    }  
+  }  
+  .tabs-md .tab-button[aria-selected=false] {  
+    .ion-md-tab-#{nth($tabImageName, 3)} {
+      content: url("../assets/imgs/mine/wo_gray.png");  
+    }  
+  }  
+  .tabs-ios .tab-button[aria-selected=true],.tabs-md .tab-button[aria-selected=true]{
+      color: #ff9e5a;
+  }
+  .tabs-ios .tab-button[aria-selected=false],.tabs-md .tab-button[aria-selected=false]{
+    color: #949494;
+}
+.tabs-md .tab-button[aria-selected=true] .ion-md-tab-tab1,
+.tabs-md .tab-button[aria-selected=false] .ion-md-tab-tab1{
+    width: 26px !important;
+    height: 30px !important;
+}
+.ion-ios-tab-tab2-outline{
+    height: 35px !important;
+}
+.tabs-md .tab-button[aria-selected=false] .ion-md-tab-tab2{
+    width: 35px !important;
+    height: 35px !important;
+}
+.tabs-md .tab-button[aria-selected=false] .ion-md-tab-tab3,
+.tabs-md .tab-button[aria-selected=true] .ion-md-tab-tab3{
+    width: 26px !important;
+    height: 25px !important;
+}
+
+
+// 公共头部样式
+.toolbar-title-md{
+  margin-left: -24px;
+}
+.toolbar-background{
+  background: -moz-linear-gradient(left,#f5ae54,#fe9e5a);
+  background: -webkit-linear-gradient(left,#f5ae54,#fe9e5a);
+  border-style: initial !important;
+  border-color: initial !important;
+}
+.fixed-content{
+  background: #fcfcfc;
+}
+.bar-button-default-ios{
+  color: black;
+}
+.back-button{
+  color: white;
+}
+.toolbar-title{
+  color: white;
+  font-weight: 400;
+}
+.header-md::after{
+  height: 0;
+}
+
+.ts-detail-action{
+  $actionsheetImage:'act1','act2','act3';
+  .ion-ios-act-#{nth($actionsheetImage, 1)} {  
+    content: url("../assets/imgs/zhuanzhang/jianhanglogo.png");
+    width: 25px;
+    height: 27px;
+  }  
+  .ion-md-act-#{nth($actionsheetImage, 1)} {  
+    content: url("../assets/imgs/zhuanzhang/jianhanglogo.png");
+  }  
+  .ion-ios-act-#{nth($actionsheetImage, 2)} {  
+    content: url("../assets/imgs/zhuanzhang/card_1.png");
+    width: 25px;
+    height: 27px;
+  }  
+  .ion-md-act-#{nth($actionsheetImage, 2)} {  
+    content: url("../assets/imgs/zhuanzhang/card_1.png");
+  }
+  .ion-ios-act-#{nth($actionsheetImage, 3)} {  
+    content: url("../assets/imgs/zhuanzhang/yue_1.png");
+    width: 25px;
+    height: 27px;
+  }  
+  .ion-md-act-#{nth($actionsheetImage, 3)} {  
+    content: url("../assets/imgs/zhuanzhang/yue_1.png");
+  }
+  
+  .action-sheet-button .button-inner{
+    justify-content: initial;
+  }
+  [icon-start] ion-icon{
+    padding-right: 0;
+    margin-right: 10px;
+  }
+  .action-sheet-ios .action-sheet-button{
+    color: #626262;
+    font-size: 1.5rem;
+  }
+ 
+}
+
+.actionsheet-font{
+    color: black !important;
+    padding: 0 !important;
+    font-size: 1.6rem !important;
+    padding-left: 1rem !important;
+}
+
+.tab-actionsheet{
+  .button-inner{
+    color: #ff9f5d !important;
+    text-align: center;
+    -webkit-box-pack: initial !important;
+   justify-content: center !important;
+  }
+  
+}
+.tab-tab-action{
+  .action-sheet-button{
+    height: 4rem !important;
+    min-height: initial !important;
+    border-bottom: 0.55px solid #d6d6da;
+  }
+  .action-sheet-md .action-sheet-group:last-child{
+    
+  }
+  .action-sheet-group{
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 20px;
+  }
+}
+
+
+
+.scroll-content::-webkit-scrollbar {
+  display: none;
+}
+.header-md::after{
+  background:none;
+}
+.orgColo{
+color: #FFA853 !important;
+}
+.btn{
+position: relative;
+left: 50%;
+width: 80%;
+margin-left: -40%;
+border-radius: 2.8rem;
+background: -moz-linear-gradient(left,#f5ae54,#fe9e5a);
+background: -webkit-linear-gradient(left,#f5ae54,#fe9e5a);
+margin-top: 2%;
+height: 4rem !important;
+}
+
+.cancelBtn{
+  position: relative;
+  left: 50%;
+  top: -18px;
+  width: 80%;
+  margin-left: -40%;
+  border-radius: 1rem;
+  background:#fff;
+  color: #FFA853;
+  border: 1px solid #FFA853;
+  margin-bottom: 8%;
+  height: 4rem !important;
+}
+
+
+.back-button-text{
+display: none;
+}
+.manBox{
+border-bottom: 1px solid gainsboro;
+}
+
+
+
+.button-md:hover:not(.disable-hover){
+  background-color: transparent;
+}
+
+
+
+.midBtn{
+  .toast-container{
+    background-color: #56565a;
+    /* opacity: 0.5; */
+    border-radius: 8px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+  }
+
+
+ 
+}
+
+
+.color-input-orange + label{
+  width: 22px !important;
+  height: 22px !important;
+  border: 1px solid #ea9836 !important;
+  background: #fff !important;
+}
+.color-input-orange:checked + label::before{
+  color: #FFA853 !important;
+  width: 22px !important;
+  height: 22px !important;
+}
+
+

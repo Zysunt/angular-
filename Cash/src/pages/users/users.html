@@ -1,0 +1,25 @@
+<!--
+  Generated template for the UsersPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>选择发送对象</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <img src="{{item.headface}}" alt="">
+      <p>{{item.name}}</p>
+      <p>{{item.tel}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
