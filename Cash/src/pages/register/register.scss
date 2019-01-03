@@ -1,82 +1,141 @@
 page-register {
-    .back-button-text{
-        display: none;
+    .toolbar-title-md{
+        margin-left: -24px;
     }
-    .button-ios,.button-md {
-        border-radius: 4px;
-        height: 2em;
-        font-size: 1.6rem;
-        color: #fff;
-        background-color: #FFA853;
-        margin: 0.4rem 0.2rem;
-        border: 1px solid #fff;
+    .toolbar-background,.fixed-content{
+        background: #564eF1;
+    }
+
+
+    .button-inner,.toolbar-title{
+        color: white;
+    }
+    .card-md{
+        margin: 0;
+    }
+    ion-card img{
+        width: initial;
+    }
+
+
+
+    .login{
+        width: 100%;
+        // height: 343px;
+        background: white;
+        border-radius: 30px;
+        margin-top: 40px;
         position: relative;
-        left: 11.1rem;
-        width: 41%;
+        left: 50%;
+        margin-left: -50%;
     }
-    .scroll-content{
-        background-color: #FFA853;
+    .inp{
+        width: 100%;
+        height: 60px;
+        border-bottom: 1px solid #f2f2f2;
+        padding-top: 18px;
     }
-    .button-md:hover:not(.disable-hover){
-        background: none;
+    .inp span{
+        color:#afafaf;
     }
-    .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
-        height: 0;
-        background: none;
-    }
-    .contBox{
-        width: 90%;
-        margin-left: 5%;
-        background-color: #FFA853;
-        color: #fff;
-        padding-top: 3rem;
-    }
-    .item{
-        height: 50px;
-        width: 80%;
-        margin: 1rem 0;
-        margin-left: 10%;
-        border-bottom: 1px solid#fff;
-        position: relative;
-    }
-    .item input{
+    .inp input{
         border: none;
-        background-color: #FFA853;
-        color: #fff;
+        float: left;
+        margin-left: 10px;
+        font-size: 15px;
         line-height: 30px;
-        position: relative;
-        top: -1.2rem;
+    }
+    .inp img{
+        float: left;
+        margin-top: 5px;
+    }
+    .reg-fog{
         font-size: 16px;
-        width: 60%;
+        color: #dedede;
+        padding: 19px 3px 10px;
+        position: relative;
     }
-    .item input::-webkit-input-placeholder{
-        color: #fff;
+    .check{
+        float: left;
+    position: relative;
+    width: 15px;
+    height: 15px;
+    background: #e3e2e9;
+    margin-top: 3px;
+    margin-right: 10px;
     }
-    .item img{
-        width: 2.5rem;
-        margin: .5rem 1rem;
+    #confirm{
+        width: 15px;
+        height: 15px;
+        opacity: 0;
     }
-    .btnBox{
-        padding: 3rem 0;
+    #confirm:checked+label{
+        display: block
     }
-    .toolbar-background{
-        background: #FFA853
+    .confirm{
+        width: 5px;
+    height: 10px;
+    position: absolute;
+    border: 2px solid #564eF1;
+    border-top: none;
+    border-left: none;
+    top: 2px;
+    left: 4px;
+        transform: rotate(45deg);
+        display: none;
+        
     }
-    .nextBtn{
-        color: #FFA853;
-    background-color: #fff;
-    border-radius: 1rem;
-    /* -webkit-box-shadow: 0px 0px 3px #888888; */
-    /* box-shadow: 0px 0px 3px #888888; */
-    width: 70%;
-    height: 50px;
-    margin-left: 15%;
-    font-size: 20px;
-    border-bottom: 2px solid #D7AA87;
-}
-.code{
-    position: absolute !important;
-    top: .5rem !important;
-    margin-left: 1rem;
-}
+    .reg-fog span:nth-of-type(2){
+        float: right;
+    }
+    .loginbtn {
+        width: 100% !important;
+        border-radius: 56px !important;
+        height: 56px !important;
+        background: #564eF1 !important;
+        font-size: 18px !important;
+        letter-spacing: 4px !important;
+        margin: 3rem 0 !important;
+    }
+
+    .codebtn{
+        width: 40% !important;
+        height: 100% !important;
+        float: right !important;
+        margin-top: 5px;
+    }
+    .codebtn button{
+        width: 90%;
+        height: 90%;
+        position: relative;
+        // top: 50%;
+        margin-top: -6%;
+        background: none;
+// left: 50%;
+// margin-left: -45%;
+    }
+    .codebtn span{
+        color: #797979;
+        font-size: 14px;
+    }
+
+ input::-webkit-input-placeholder{
+            color:#afafaf;
+            font-size: 14px;
+        }
+        // input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+        //     color:#afafaf;
+        //     font-size: 14px;
+        // }
+        // input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+        //     color:#afafaf;
+        //     font-size: 14px;
+        // }
+        // input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+        //     color:#afafaf;
+        //     font-size: 14px;
+        // }
+        #newpsd::-webkit-input-placeholder{
+            font-size: 12px;
+        }
 }

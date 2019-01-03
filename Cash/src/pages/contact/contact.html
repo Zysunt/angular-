@@ -1,17 +1,33 @@
+<!--
+  Generated template for the ContactPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
+
   <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
+    <ion-title text-center>联系客服</ion-title>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+
+<ion-content padding>
+    <ion-card class="contact_card">
+        <ion-card-content>
+        <div style="padding:30px">
+          <img src="assets/imgs/contact/wechat@2x.png" alt="" width="50px" height="41px;" style="float:left">
+          <img src="assets/imgs/contact/arrowhead@2x.png" alt="" width="33px" height="8px;" style="float:left;margin-left: 35px; margin-top: 20px;">
+          <img src="assets/imgs/contact/customer service@2x.png" alt="" width="45px;" height="46px;" style="float:right">
+        </div>
+
+         <p class="wechatID">微信ID:{{weixinhao}}</p>
+
+         <img src="{{erweima}}" alt="" width="103px" height="103px;" class="QRcode">
+
+         <p class="alter">或<span>微信扫一扫</span></p>
+        </ion-card-content>
+      
+      </ion-card>
 </ion-content>

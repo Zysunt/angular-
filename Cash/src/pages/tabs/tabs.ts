@@ -1,60 +1,48 @@
 import { Component } from '@angular/core';
 
-import { MinePage } from '../mine/mine';
+
 import { HomePage } from '../home/home';
-import {AboutPage} from '../about/about'
-import { ActionSheetController, NavController, Events } from 'ionic-angular';
-import { LenderPage } from '../lender/lender';
+import {IdentificationPage} from '../identification/identification';
+import {FindPage} from '../find/find';
+import {MinePage} from '../mine/mine'
+import { Events, NavController } from 'ionic-angular';
+import { LoginPage } from '../login/login';
 
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-public isShow=false
-  tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = MinePage;
 
-  constructor(public actionSheetCtrl:ActionSheetController,
-    public navCtrl:NavController,
-    public events:Events) {
+
+
+  tab1Root = HomePage;
+  tab2Root = IdentificationPage;
+  tab3Root = FindPage;
+  tab4Root = MinePage;
+
+  constructor(
+    public events:Events,
+    public navCtrl:NavController
+  ) {
 
   }
 
-  presentActionSheet(){
-    const actionSheet = this.actionSheetCtrl.create({
-      cssClass:'tab-tab-action',
-      buttons: [
-        {
-          text: '出借人',
-          cssClass:'tab-actionsheet',
-          role:'destructive',
-          handler: () => {
-            this.navCtrl.push(LenderPage,{
-              islender:true
-            })
-          }
-        },{
-          text: '借款人',
-          cssClass:'tab-actionsheet',
-          role:'destructive',
-          handler: () => {
-            // console.log('Archive clicked');
-            this.navCtrl.push(LenderPage,{
-              islender:false
-            })
-          }
-        },{
-          text: '取消',
-          role:'cancle',
-          cssClass:'tab-actionsheet',
-          handler: () => {
-            console.log('Archive clicked');
-          }
-        }
-      ]
-    });
-    actionSheet.present();
+  ionViewDidLoad() {
+    this.listenEvents();
+    // console.log('界面创建');
+  }
 
+  ionViewWillUnload() {
+    this.events.unsubscribe('toLogin');
+    // console.log('界面销毁');
+  }
+
+
+  listenEvents() {
+    this.events.subscribe('toLogin', () => {
+      this.navCtrl.setRoot(LoginPage);
+      // this.nav.pop(); 使用这种方式也可以，但是会在登录框中默认填上值
+      // console.log('返回登录');
+    });
   }
 }

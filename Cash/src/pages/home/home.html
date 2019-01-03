@@ -1,110 +1,152 @@
-<ion-header>
-  <div class="headBox">
-    <div class="topBox">
-      <span>打借条</span>
-     <div class="news" (click)="toNews()">
-      <img class="headImg" src="../../assets/imgs/home/2.png" />
-     </div>
-
-    </div>
-    <div class="monBox" (click)="tocharge()">
-      <span>账号余额(元)</span>
-      <span class="fontBig monFont">1000000.00</span>
-    </div>
-    <ul class="headUl">
-      <li (click)="ToDaihuan()">
-        <span>代还金额(元)</span>
-        <span class="fontBig">1000000000000</span>
-      </li>
-      <li (click)="ToDaishou()">
-        <span>待收金额(元)</span>
-        <span class="fontBig">100000000.00</span>
-      </li>
-    </ul>
-  </div>
-  <!-- <ul class="manUl loan">
-    <li><span class="bor">收到的借条</span></li>
-    <li><span>发出的借条</span></li>
-  </ul> -->
-  <ion-toolbar no-border-top>
-      <ion-segment [(ngModel)]="appType">
-        <ion-segment-button value="shou" style="margin-right: 2rem;">
-           <span> 收到的借条</span>
-        </ion-segment-button>
-        <ion-segment-button value="fa">
-            <span>发出的借条</span>
-        </ion-segment-button>
-      </ion-segment>
-    </ion-toolbar>
-</ion-header>
-
-<ion-content>
- 
-  <ion-refresher (ionRefresh)="doRefresh($event)" >
-    <ion-refresher-content
-      pullingText="刷新.."
-      refreshingText="刷新中...">
-
-
+<!-- <ion-header>
+  <ion-navbar class="home_header">
+    
       
-    </ion-refresher-content>
-  </ion-refresher>
+  </ion-navbar>
+</ion-header> -->
 
-  <div class="manBox" *ngFor="let item of getItems(appType)">
-      <ul class="manUl" (click)="toLend(item.isQueren)" >
-        <li style="width:35%">
-          <p class="orgColo">
-            <span>借款金额：</span>
-            <span>{{item.jiekuan}}元</span>
-          </p>
-          <p>
-            <span>到期应还：</span>
-            <span>{{item.huankuan}}元</span>
-          </p>
-          <p>
-            <span>借款人：</span>
-            <span>{{item.jiekuanren}}</span>
-          </p>
-          
-        </li>
-        <li><div class="shuBox"></div></li>
-        <li>
-            <p>
-                <span>借款日期：</span>
-                <span>{{item.jiekuandate}}</span>
-              </p>
-              <p>
-                  <span>还款日期：</span>
-                  <span>{{item.huankuandate}}</span>
-              </p>
-              <p>
-                <span>年利率：</span>
-                <span>{{item.nianlilv}}%</span>
-              </p>
-        </li>
-      </ul>
-      
-      <div *ngIf="item.isQueren">
-         
-          <div class="querBtnBox">
-              <span class="orgColo ta" (click)="toLiabilities()">查看他的负债</span>
-            <button class="querBtn">确认借条</button>
+
+
+<ion-content text-center>
+<!-- 头部 -->
+<div class="home_header">
+    <img src="assets/imgs/home/news@2x.png" alt="" (click)="msg()" width="19px" height="19px;">
+    <ion-slides pager loop="ture" autoplay="1000" *ngIf="imgbox.length > 1" class="slides" >
+        <ion-slide *ngFor="let item of imgbox" >
+            <img [src]="item.img_url" alt="">
+        </ion-slide>
+      </ion-slides>
+
+      <ion-slides *ngIf="imgbox.length <= 1">
+        <ion-slide>
+          <img src="assets/imgs/home/bg_1@2x.png" alt="" width="100%" height="100%">
+        </ion-slide>
+      </ion-slides>
+</div>
+
+    
+
+
+
+<ion-card  class="pay_content" *ngIf="!isChecking">
+    <ion-card-content class="first_show" *ngIf="step==0">
+      <p class="max_borrow">最高可借 (元)</p>
+      <p class="max_money">100000.00</p>
+      <div class="features">
+        <div class="feature_list">
+          <img src="assets/imgs/home/safe@2x.png" alt="" width="60px" height="60px">
+          <p>安全可靠</p>
+        </div>
+        <div class="feature_list">
+            <img src="assets/imgs/home/data@2x.png" alt="" width="60px" height="60px">
+            <p>资料简单</p>
           </div>
+          <div class="feature_list">
+              <img src="assets/imgs/home/check@2x.png" alt="" width="60px" height="60px">
+              <p>审核迅速</p>
+            </div>
       </div>
+    </ion-card-content>
 
-      <div *ngIf="!item.isQueren">
-      <div class="dengImgBox">
-       <div class="dBox">
-          <img class="querImg" src="../../assets/imgs/home/3.png"/>
-          <span class="orgColo qu">等待确认</span>
-       </div>
-      </div>
-    </div>
+    <!-- <ion-card-content class="borrow_capacity" [hidden]="step!=2">
+      <p class="ava_borrow">可借额度 (元)</p>
+      <p class="ava_money">{{ava_money}}</p>
+    </ion-card-content> -->
 
-    </div>
-  
- 
+    <ion-card-content class="payback" *ngIf="step==1">
+      <p>到期应还1</p>
+      <h2>{{should_pay}}元</h2>
+      <p>距离还款还有</p>
+      <h2>{{enddate}}天</h2>
+    </ion-card-content> 
 
 
+
+    <ion-card-content class="payback" *ngIf="step==2">
+      <p>最终放款额度2</p>
+      <h2>{{last_money}}元</h2>
+      <p>最终放款天数</p>
+      <h2>{{last_qishu}}天</h2>
+    </ion-card-content> 
+
+    <ion-card-content class="payback" *ngIf="step==3">
+      <p>最终放款额度3</p>
+      <h2>{{last_money}}元</h2>
+      <p>最终放款天数</p>
+      <h2>{{last_qishu}}天</h2>
+    </ion-card-content> 
+
+    <ion-card-content class="payback" *ngIf="step==4">
+      <p>最终放款额度4</p>
+      <h2>{{last_money}}元</h2>
+      <p>最终放款天数</p>
+      <h2>{{last_qishu}}天</h2>
+    </ion-card-content> 
+
+    <ion-card-content class="payback" *ngIf="step==5">
+      <p>最终放款额度5</p>
+      <h2>{{last_money}}元</h2>
+      <p>最终放款天数</p>
+      <h2>{{last_qishu}}天</h2>
+    </ion-card-content> 
+
+    <ion-card-content class="payback" *ngIf="step==6">
+      <p>最终放款额度6</p>
+      <h2>{{last_money}}元</h2>
+      <p>最终放款天数</p>
+      <h2>{{last_qishu}}天</h2>
+    </ion-card-content> 
+
+    <ion-card-content class="payback" *ngIf="step==7">
+      <p>最终放款额度7</p>
+      <h2>{{last_money}}元</h2>
+      <p>最终放款天数</p>
+      <h2>{{last_qishu}}天</h2>
+    </ion-card-content> 
+  </ion-card>
+
+<!-- <div *ngIf="!isChecking"> -->
+<div style="clear:both; height:160px"></div>
+<button ion-button block class="torepay" *ngIf="step==0" (click)="shenqing()">立即申请0</button>
+<button ion-button block class="torepay" *ngIf="step==1" (click)="tixian()">立即提现1</button>
+<button ion-button block class="torepay" *ngIf="step==2" (click)="toauto()">立即还款2</button>
+<button ion-button block class="torepay" *ngIf="step==3" (click)="toauto()">立即还款3</button>
+<button ion-button block class="torepay" *ngIf="step==4" (click)="toauto()">立即还款4</button>
+<button ion-button block class="torepay" *ngIf="step==5" (click)="toauto()">立即还款5</button>
+<button ion-button block class="torepay" *ngIf="step==6" (click)="toauto()">立即还款6</button>
+<button ion-button block class="torepay" *ngIf="step==7" (click)="toauto()">立即还款7</button>
+<!-- </div> -->
+
+
+<!-- <div id="check" *ngIf="isChecking" text-center > -->
+<div class="checking" [hidden]="checkingstep!=1" >
+  <img src="assets/imgs/home/check_1@2x.png" alt="" width="178px" height="166px;">
+  <p style="color:#6963f2;margin-top: 15px;">
+    审核中
+  </p>
+  <p style="color:#bbbbbb;margin-top: 15px;padding: 0 35px;">
+    请耐心等待，审核的结果最终会以短信的形式通知到您
+  </p>
+</div>
+
+<div class="checking" [hidden]="step!=2" >
+  <img src="assets/imgs/home/success@2x.png" alt="" width="178px" height="166px;">
+  <p style="color:#6963f2;margin-top: 15px;">
+    恭喜您审核成功
+  </p>
+  <p style="color:#bbbbbb;margin-top: 15px;padding:0 45px;">
+    您的申请已成功，请点击联系您的专属客服
+    了解放款事宜，正常2小时到账
+  </p>
+
+</div>
+
+<div class="checking" [hidden]="checkingstep!=3">
+  <div class="ad_wrap"></div>
+  <img src="assets/imgs/home/pic_5@2x.png" alt="" width="252px" height="265px;" class="adv" (click)="torecommend()">
+  <img src="assets/imgs/home/wrong@2x.png" alt="" width="31px" height="31px;" class="adv_close" (click)="restart()">
+</div>
+<!-- </div> -->
 
 </ion-content>
+

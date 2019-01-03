@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ToastController, Header } from 'ionic-angular';
-import{ TabsPage} from '../../pages/tabs/tabs';
-import {BaseUI} from '../../baseUI/baseUI';
-import{Http,Headers,Jsonp} from '@angular/http';
+import { Component,ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Content,ToastController,LoadingController } from 'ionic-angular';
+import {Http,Jsonp,Headers} from '@angular/http';
+import 'rxjs/Rx'
+import { BaseUI } from '../baseUI/baseUI';
+
 /**
  * Generated class for the RegisterPage page.
  *
@@ -15,56 +16,66 @@ import{Http,Headers,Jsonp} from '@angular/http';
   selector: 'page-register',
   templateUrl: 'register.html',
 })
-export class RegisterPage extends BaseUI {
-  private headers = new Headers({'Content-Type':'application/json'})
-  public tel=1234567890;
+export class RegisterPage extends BaseUI{
+  private headers = new Headers({'Content-Type': 'application/json'});
+
+  public tel:any;
   public msgcode:any;
   public newpsd:any;
-  public telNum:any;
-
-  password:any;
+  public agreed=false;
   verifyCode: any = {
     verifyCodeTips: "获取验证码",
-    countdown: 59,//总共时间
+    countdown: 60,//总共时间
     disable: true
 }
+@ViewChild(Content) content:Content
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private toastCtrl:ToastController,
     private http:Http,
     private jsonp:Jsonp,
-    
+    private loadingCtrl:LoadingController
     ) {
-    super()
+      super()
   }
 
   ionViewDidLoad() {
-    console.log(this.telNum,this.password);
+    console.log('ionViewDidLoad RegisterPage');
+  }
+  scrollTo() {
+    　　window.addEventListener('native.keyboardshow',(e:any) =>{
+    　　　　this.content.scrollTo(0,e.keyboardHeight);
+    　});
   }
 
-  toHome(){
-    if(this.password==null){
-      super.showToast(this.toastCtrl,"密码不能为空")
-    } else {
-      this.navCtrl.setRoot(TabsPage);
+
+  getveri(){
+    var that=this
+    if(this.tel==undefined){
+      super.showToast(this.toastCtrl,'手机号不能为空')
+    }else if(/^1[3456789]\d{9}$/.test(this.tel)==false){
+      super.showToast(this.toastCtrl,'手机号格式不正确')
+    }else{
+      this.settime()
+      var url='http://ai.51jinkong.cn/app/Login/getPhoneCode'
+      this.http.post(url,{mobile:this.tel},{headers:this.headers}).map(res =>res.json()).subscribe(res =>{
+        console.log(res)
+        that.fns(res.state)
+      })
     }
-    
 
-//this.navCtrl.push(HomePage);
   }
 
-//倒计时
-settime() {
-  var myreg=/^1[3456789]\d{9}$/;
-  if (!myreg.test(this.telNum)) {
-     console.log("电话格式错误")
-  } else if(this.telNum ==null){
-    super.showToast(this.toastCtrl,"电话不能为空")
+  fns(state){
+    if(state==1){
+      super.showToast(this.toastCtrl,'验证码获取成功')
+    }else{
+      super.showToast(this.toastCtrl,'验证码获取失败')
+    }
   }
-  else {
-    //  console.log("电话正确")
-     this.verifyCode.disable=true;
-     if (this.verifyCode.countdown == 0) {
+
+  settime() {
+    if (this.verifyCode.countdown == 0) {
       this.verifyCode.countdown=60;
         this.verifyCode.verifyCodeTips = "获取验证码";
         this.verifyCode.disable = true;
@@ -76,10 +87,48 @@ settime() {
     setTimeout(() => {
         this.verifyCode.verifyCodeTips = "重新获取" + this.verifyCode.countdown + "秒";
             this.settime();
-          
     }, 1000);
-    return;
+}
+
+
+agree(){
+console.log(this.agreed)
+// alert('aa')
+}
+
+register(){
+  if(this.tel==undefined){
+    super.showToast(this.toastCtrl,'手机号不能为空')
+  }else if(/^1[3456789]\d{9}$/.test(this.tel)==false){
+    super.showToast(this.toastCtrl,'手机号格式不正确')
+  }else if(this.msgcode==undefined){
+    super.showToast(this.toastCtrl,'验证码不能为空')
+  }else if(this.newpsd==undefined){
+    super.showToast(this.toastCtrl,'密码不能为空')
+  }else if(/^[0-9a-zA-Z]{8,}$/.test(this.newpsd)==false){
+    super.showToast(this.toastCtrl,'输入的密码不符合要求')
+  }else if(this.agreed==false){
+    super.showToast(this.toastCtrl,'请阅读并同意协议')
+  }else{
+    var url='http://ai.51jinkong.cn/app/Login/newsuer'
+    var that=this
+    this.http.post(url,{mobile:this.tel,verify_code:this.msgcode,password:this.newpsd},{headers:this.headers}).map(res =>res.json()).subscribe(res =>
+      that.fns2(res.message)
+      )
+     
   }
+}
+
+fns2(msg){
+  var loading=super.showLoading(this.loadingCtrl,'注册中...')
+  if(msg=='注册成功'){
+    super.showToast(this.toastCtrl,msg)
+    loading.dismiss()
+    this.navCtrl.popToRoot()
+  }else{
+    super.showToast(this.toastCtrl,msg)
+    loading.dismiss()
   }
+}
 
 }

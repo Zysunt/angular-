@@ -8,28 +8,39 @@
 
   <ion-navbar>
     <ion-title text-center>我的银行卡</ion-title>
-    <img src="assets/imgs/mycredit/tianjia.png" alt="" width="15px" height="15px;" (click)="toaddcredit()" class="add_credit">
+    <span class="change" (click)="changecredit()" *ngIf="hascard && !isedit">编辑</span>
+    <span class="change" (click)="delete()" *ngIf="hascard && isedit" style="right:70px">删除</span>
+    <span class="change" (click)="cancledelete()" *ngIf="hascard && isedit">取消</span>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <div class="bank_card" *ngFor="let item of credits" [hidden]="credits.length==0">
-    <div class="card_bank">
-        <img style="position: relative;top: .5rem;" src="assets/imgs/mycredit/card_3.png" alt="" width="25px" height="21px">
-        <span>{{item.bank}}</span>
-    </div>
-    <p class="card_type">
-      {{item.card_type}}
-    </p>
-    <div class="card_code">
-      <img src="assets/imgs/mycredit/pic_12.png" alt="" width="136px" height="13px">
-      <span>{{item.last_code}}</span>
-    </div>
-</div>
+  <div *ngFor="let item of cardlist">
+      <div  class="bank_card" *ngIf="hascard" (click)="choosemoren(item.id,item.default)">
+        <div class="card_bank">
+          <img src="assets/imgs/mine/card_3@2x.png" alt="" width="25px" height="20px">
+          <span>{{item.bank_name}}</span>
+          <span *ngIf="item.default==1">（默认）</span>
+      </div>
+      <p class="card_type">
+        {{item.card_type}}
+      </p>
+      <div class="card_code">
+        <img src="assets/imgs/mine/asterisk@2x.png" alt="" width="136px" height="13px">
+        <span>{{item.weihao}}</span>
+      </div>
 
-<div [hidden]="credits.length!==0" class="notice">
-还没添加银行卡哦
-</div>
+      <!-- 选项卡 -->
+      <div class="radio" *ngIf="hascard && isedit">
+        <input id="{{item.id}}" type="radio" name="item" >
+        <label for="{{item.id}}" (click)="choose(item.id)"></label>
+    </div>
+      </div>
+  </div>
+
+  <div class="addcard" *ngIf="!hascard || cardlist.length!==2" (click)="addcard()">
+    +
+  </div>
 </ion-content>

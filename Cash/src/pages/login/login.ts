@@ -1,12 +1,12 @@
 import { Component,ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams,ToastController,Content, LoadingController } from 'ionic-angular';
-import { ForgetPage} from '../../pages/forget/forget';
-import { RegisterPage} from '../../pages/register/register';
-import { HomePage} from '../../pages/home/home';
-import { TabsPage} from '../../pages/tabs/tabs';
-// import {Http,Headers,Jsonp} from '@angular/http';
-import {Storage} from '@ionic/storage';
-import { BaseUI } from '../../baseUI/baseUI';
+import { IonicPage, NavController, NavParams, Content,ToastController,LoadingController, Tabs } from 'ionic-angular';
+import {RegisterPage} from '../register/register';
+import {ForgottenPage} from '../forgotten/forgotten';
+import {Http,Jsonp,Headers} from '@angular/http';
+import 'rxjs/Rx'
+import { BaseUI } from '../baseUI/baseUI';
+import { TabsPage } from '../tabs/tabs';
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -20,77 +20,74 @@ import { BaseUI } from '../../baseUI/baseUI';
   templateUrl: 'login.html',
 })
 export class LoginPage extends BaseUI{
-  private headers = new Headers({'Content-Type':'application/json'});
-  telNum:any;
-  password:any;
-  arr = new Array("18245126321","123456");
-  list = {}
-  @ViewChild(Content) content:Content;
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams,
-    private taostCtrl:ToastController,
-    private loadingCtrl:LoadingController,
-    public storage:Storage
-    ) {
-      super()
+  private headers = new Headers({'Content-Type': 'application/json'});
+  public user:any;
+  public tel:any='15261563802';
+  public psd:any=123;
+@ViewChild(Content) content:Content
+  constructor(public navCtrl: NavController,
+     public navParams: NavParams,
+     private toastCtrl:ToastController,
+     private http:Http,
+     private jsonp:Jsonp,
+     private loadingCtrl:LoadingController) {
+       super()
   }
 
-ngAfterContentChecked(): void {
-  //Called after every check of the component's or directive's content.
-  //Add 'implements AfterContentChecked' to the class.
-  // console.log(JSON.stringify(this.password))
-}
-
-  scrollTo(){
-    window.addEventListener('native.keyboardshow',(e:any)=>{
-      this.content.scrollTo(0,e.keyboardHeight);
-    })
-  }
-  toHome(){
-
-    // var myreg=/^1[3456789]\d{9}$/;
-    
-    // if(this.telNum == undefined){
-    //   super.showToast(this.taostCtrl,'电话号码不能为空')
-    // } else if (!myreg.test(this.telNum)){
-    //   super.showToast(this.taostCtrl,"电话号码不正确");
-    // } else if(this.password ==undefined){
-    //   super.showToast(this.taostCtrl,'密码不能为空')
-    // } else if(JSON.stringify(this.password).length<6){
-    //   super.showToast(this.taostCtrl,'密码不能小于6位')
-
-    // } else
-    //   {
-      var url=''
-      // var loading=super.showLoading(this.loadingCtrl,'提交中...')
-      // this.http.post(url,JSON.stringify({tel:this.telNum,psd:this.password}),{headers:this.headers}).subscribe(res =>
-      //   console.log(res.json())
-       
-      //   )
-      //   loading.dismiss();
-      // this.list={
-      //   username:Math.random().toString(36).substr(2),
-      //   tel:this.telNum,
-      //   password:this.password
-      // }
-      // console.log(this.list)
-      //   this.storage.set('user',JSON.stringify(this.list))
-        // this.storage.get('user').then((val) =>{
-        //   console.log(val)
-        // })
-      this.navCtrl.setRoot(TabsPage);
-      // var storage=window.localStorage;
-      //  storage.setItem('json',JSON.stringify(this.list));
-      //  console.log(storage);
-    // }
-
+  ionViewDidLoad() {
    
+  }
+  scrollTo() {
+    　　window.addEventListener('native.keyboardshow',(e:any) =>{
+    　　　　this.content.scrollTo(0,e.keyboardHeight);
+    　});
   }
   toRegister(){
     this.navCtrl.push(RegisterPage)
   }
 
   tofogten(){
-    this.navCtrl.push(ForgetPage)
+    this.navCtrl.push(ForgottenPage)
+  }
+
+  login(){
+    var that = this;
+    var myreg=/^1[3456789]\d{9}$/;
+    if(this.tel == undefined){
+      super.showToast(this.toastCtrl,'电话号码不能为空')
+    } 
+    // else if (!myreg.test(this.tel)){
+    //   super.showToast(this.toastCtrl,"电话号码不正确");
+    // } 
+    else if(this.psd ==undefined){
+      super.showToast(this.toastCtrl,'密码不能为空')
+    } else {
+      var url='http://ai.51jinkong.cn/app/Login/logingo';
+      var loading=super.showLoading(this.loadingCtrl,'提交中...')
+      this.http.post(url,{mobile:this.tel,password:this.psd},{headers:this.headers}).map(res =>res.json()).subscribe(res =>
+        {         
+          console.log(res)
+          var local = window.localStorage;
+          var user={
+            mobile:res.data.mobile,
+            token:res.data.token,
+            name:res.data.name
+          }
+          local.setItem('user',JSON.stringify(user))
+         
+          if(res.message == '登录成功'){
+            loading.dismiss()
+            super.showToast(this.toastCtrl,res.message)
+            this.navCtrl.setRoot(TabsPage)
+          }else{
+            loading.dismiss()
+            super.showToast(this.toastCtrl,res.message)
+          }
+        }
+    
+      )
+    }
   }
 }
+
+

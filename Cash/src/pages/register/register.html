@@ -7,30 +7,53 @@
 <ion-header>
 
   <ion-navbar>
-    
+    <ion-title text-center>注册</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content >
-    <div class="contBox">
-        <div class="item">
-          <img src="../../assets/imgs/login/01.png" alt="">
-            <input type="tel"  pattern="[0-9]*" [(ngModel)]="telNum" placeholder="请输入您的手机号码"/>
-        </div>
-        <div class="item">
-          <input type="number" class="code"  pattern="[0-9]*" placeholder="输入验证码">
-          <button color="custom" item-right ion-button (click)="settime()" [disabled]="!verifyCode.disable" value="获取验证码" >{{verifyCode.verifyCodeTips}}</button>
-        </div>
-        <div class="item">
-          <img src="../../assets/imgs/login/1.png" alt="">
-          <input type="password" pattern="[0-9]*" [(ngModel)]="password" placeholder="请输入您的账号密码" />
-        </div>
-        <div class="btnBox">
-            <button class="nextBtn" (click)="toHome()">注册</button>
-      
+<ion-content padding>
+    <ion-card class="login"> 
+        <ion-card-content>
+    
+         <div class="inp">
+           <img src="assets/imgs/login/telp@2x.png" alt="" width="13px" height="17px">
+           <input type="number" name="" placeholder="请输入您的手机号" pattern="[0-9]*" [(ngModel)]="tel" style="width:46%;">
+           <div class="codebtn">
+            <button color="custom" item-right ion-button (click)="getveri()" [disabled]="!verifyCode.disable" value="获取验证码" style="box-shadow:none;">{{verifyCode.verifyCodeTips}}</button>
           </div>
+         </div>
+    
+         <div class="inp">
+          <input type="number" name=""pattern="[0-9]*"  placeholder="请输入短信验证码" [(ngModel)]="msgcode" style="padding-left:15px;">
+        </div>
+
+         <div class="inp">
+          <img src="assets/imgs/login/password@2x.png" alt="" width="14px" height="17px">
+          <input type="password" name="" [(ngModel)]="newpsd" placeholder="请输入新密码，(最少8位数，数字+字母)" style="width:87%">
+        </div>
+    
+        <div class="reg-fog">
+           <div class="check">
+            <input type="checkbox" name="" id="confirm" [(ngModel)]="agreed" (click)="agree()">
+            <label for="confirm" class="confirm"></label>
+          </div>
+           <span style="font-size:15px;">请阅读并同意《借款用户使用协议》</span>
+        </div>
+    
+    
+          <button ion-button text-center class="loginbtn" class="register()" (click)="register()"
+          style="width: 100% !important;
+          border-radius: 56px !important;
+          height: 56px !important;
+          background: #564eF1 !important;
+          font-size: 18px !important;
+          letter-spacing: 4px !important;
+          margin: 3rem 0 !important;">
+            注册
+          </button>
+        </ion-card-content>
       
-      </div>
+      </ion-card>
 </ion-content>

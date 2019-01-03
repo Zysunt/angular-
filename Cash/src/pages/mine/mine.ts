@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {ShimingPage} from '../shiming/shiming';
+import {LoginPage} from '../login/login';
+import {MessagePage} from '../message/message';
+import {MyCouponPage} from '../my-coupon/my-coupon';
+import {ProblemPage} from '../problem/problem';
+import {ContactPage} from '../contact/contact';
+import {BorrowRecordPage} from '../borrow-record/borrow-record';
 import {MyCreditPage} from '../my-credit/my-credit';
-import {TransaccountPage} from '../transaccount/transaccount'
-import { ProblemsPage } from '../problems/problems';
-import { AboutPage } from '../about/about';
+import {SettingPage} from '../setting/setting'
 
 /**
  * Generated class for the MinePage page.
@@ -24,24 +27,42 @@ export class MinePage {
   }
 
   ionViewDidLoad() {
+   
     console.log('ionViewDidLoad MinePage');
   }
 
-
-  toshiming(){
-    this.navCtrl.push(ShimingPage)
+  toLogin(){
+    this.navCtrl.push(LoginPage)
   }
 
+  toidentify(){
+      this.navCtrl.parent.select(1);
+  }
+
+  tomessage(){
+    this.navCtrl.push(MessagePage)
+  }
+
+  tomycoupon(){
+    this.navCtrl.push(MyCouponPage)
+  }
+
+  toproblem(){
+    this.navCtrl.push(ProblemPage)
+  }
+
+  tocontact(){
+    this.navCtrl.push(ContactPage)
+  }
+
+  toborrowrecord(){
+    this.navCtrl.push(BorrowRecordPage)
+  }
   tomycredit(){
     this.navCtrl.push(MyCreditPage)
   }
-  totransaccount(){
-    this.navCtrl.push(TransaccountPage)
-  }
-  toproblems(){
-    this.navCtrl.push(ProblemsPage)
-  }
-  toabout(){
-    this.navCtrl.push(AboutPage)
+
+  tosetting(){
+    this.navCtrl.push(SettingPage)
   }
 }

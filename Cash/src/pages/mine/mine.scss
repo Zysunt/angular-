@@ -1,82 +1,146 @@
 page-mine {
-.header{
-    width: 100%;
+    .header{
+        background: #564eF1;
+        height: 200px;
+        padding-top: 38px;
     position: relative;
-    height: 201px;
-    z-index: -1;
-}
-.header_content{
-    position: absolute;
-    left: 50%;
-    margin-left: -40px;
-    font-size: 20px;
-    color: white;
+    color: #fefefe;
     text-align: center;
-    top: 35px;
-}
-.header_content p{
-    margin-top: 5px;
-}
-.header .shezhi{
-    position: absolute;
-    right: 20px;
-    top: 30px;
-}
+    }
+    .content{
+        padding: 0 !important;
+    }
+    .scroll-content{
+padding: 0 !important;
+    }
+    .toolbar-background{
+        background: #564eF1;
+        height: 200px;
+    }
+    .toolbar-ios ion-title{
+        position: relative;
+        
+    }
+    ion-navbar.toolbar{
+        height: 200px;
+    }
+    .toolbar-title{
+        margin-top: -10px;
+        margin-bottom: 15px;
+    }
+    .toolbar-title,.toolbar-content{
+        color: #fefefe;
+    }
+    .toolbar-title-ios{
+        font-weight: 100;
+        font-size: 2rem
+    }
 
-.scroll-content{
-    background: #eeefef;
-}
-ion-card img{
-    width: initial;
-}
-.renzheng_list{
-    margin-top: -37px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-.list{
-    width: 30%;
-    float: left;
-    margin-right: 3%;
-}
-.list img{
-    position: relative;
-    left: 50%;
-    margin-left: -14px
-}
-.list p{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
 
-.card-content{
-    padding: 13px 0px 14px;
-}
-.menu_list{
-    border-radius: 10px;
-    
-}
-.menu_list .card-content{
+
+
+    .scroll-content{
+        // position: initial;
+        // height: 100%;
+    }
+    .mine_card{
+        width: 95%;
+        position: absolute;
+        left: 50%;
+        margin-left: -48%;
+        top: 180px;
+        z-index: 200;
+        height: 146px;
+    }
+    .card_left{
+        float: left;
+        width: 50%;
+        height: 100%;
+    }
+    .card_right{
+        float: right;
+        width: 50%;
+        height: 100%;
+    }
+    ion-card img{
+        width: initial;
+        margin: 0 auto;
+    }
+    ion-card-content{
+        height: 100%;
+        position: relative;
+    }
+    .card_left p,.card_right p{
+        position: absolute;
+        bottom: 0;
+        // margin-left: 38px;
+        margin-bottom: 13px;
+    }
+    .card_right p{
+        left: 50%;
+    margin-left: 13%;
+    }
+    .card_left p{
+        left: 43%;
+    margin-left: -25%;
+    }
+    .line{
+        position: absolute;
+        background: #b3b3b3;
+        width: 1px;
+        height: 65px;
+        left: 50%;
+        top: 50%;
+        margin-top: -32px;
+    }
+
+    ion-list{
+        margin: 0;
     padding: 0;
-}
-.menu{
+    display: block;
+    list-style-type: none;
+    z-index: 9999999999;
     position: relative;
-    width: 100%;
-    display: flex;
-    line-height: 27px;
-    font-size: 15px;
-    border-bottom: 2px solid #e4e4e4;
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-.menu_icon{
-    margin-right: 20px;
-    margin-left: 15px;
-    width: 27px;
-}
-.arrow{
-margin-top: 9px;
-position: absolute;
-right: 20px;
-}
+    width: 96%;
+    left: 50%;
+    margin-left: -50% !important;
+    margin-top: 152px !important;
+    }
+    .list-md{
+        width: 100%
+    }
+    .list-ios > .item-block:first-child{
+        border: none;
+    }
+    .list-ios > .item-block:last-child{
+        border: none;
+    }
+    .list{
+        text-align:left;
+    }
+    .list-ios,.list-md{
+        margin: 0;
+    }
+
+
+
+    .list-md > .item-block:last-child .item-inner{
+        border-bottom: 1px solid #dedede;
+    }
+    .list-ios > .item-block:last-child .item-inner{
+        border-bottom: 0.55px solid #c8c7cc;
+    }
+    
+
+
+    .mine_menu span:nth-of-type(1){
+        position: relative;
+    top: -5px;
+    left: 10px;
+    }
+
+    .arrow_right{
+        float: right;
+        margin-top: 10px;
+    }
 }

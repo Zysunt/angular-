@@ -1,214 +1,205 @@
-page-home {headImg
-    *{
-        font-size: 14px;
-    }
-.headBox{
-    padding-top: 1rem;
-    height: 16.9rem;
-    width: 100%;
-    background-image: url(../../assets/imgs/home/1.png);
-    background-size: 100% 100%;
-    color: #fff;
+page-home {
+.home_header{
+    height: 180px;
+    color: white;
     text-align: center;
 }
-.topBox{
-    margin: 1rem .8rem 1.7rem;
-    overflow: hidden;
+.home_header p{
+    margin: 0;
+    margin: 0 auto;
+}
+
+.home_header .intro{
+    padding-bottom: 5px;
+    font-size: 26px;
+    width: 40%;
+    border-bottom: 1px dashed white;
+    margin-top: -20px;
+    margin-bottom: 12px;
+}
+.home_header .tip{
+    width: 54%;
+    font-size: 16px;
+    border: 1px solid white;
+}
+
+
+
+.slides img{
+    width: 100%;
+    height: 100%;
+    top: 0 !important;
+    left: 0 !important;
+}
+.toolbar-content{
+    height: 100%;
+}
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets{
+    bottom: 20px;
+}
+.fixed-content{
+    background: #fcfcfc;
+}
+ion-card img{
+    width: initial;
+}
+
+.pay_content{
+    width: 90%;
+    margin: 0 auto;
+    // height: 210px;
+    padding-bottom: 10px;
+    position: absolute;
+    z-index: 99;
+    text-align: center;
+    left: 50%;
+    margin-left: -45%;
+    top: 166px;
+    border-radius: 10px;
+}
+.payback p{
+    font-size: 18px;
+    color: #434343;
+    margin-top: 7px;
+}
+.payback h2{
+    font-size: 36px;
+    color: #564ef1;
+    margin-top: 7px;
+    // margin-bottom: 25px;
+}
+.repay{
     position: relative;
+    bottom: 1px;
 }
-.headImg{
-    width: 2rem;
-   
+
+// .scroll-content{
+//     position: initial;
+// }
+
+.torepay{
+    position: relative;
+    // top: 70%;
+    // bottom: 15%;
+    width: 90%;
+    left: 50%;
+    margin-left: -45%;
+    border-radius: 2.8em;
+    box-shadow: #434343;
+    background: #564ef1;
+    margin-top: 80px;
+    height: 4.6rem;
 }
-.news{
-    height: 2rem;
-    width: 3rem;
+.home_header img{
+    position: absolute;
+    right: 10px;
+    top: 3rem;
+    z-index: 999;
+}
+.imgs{
     position: absolute;
     right: 0;
-    top: -7%;
+    top: 0;
+    left: 0;
+    height: 180px;
+    z-index: 999;
+    width: 100%;
 }
-.headUl{
-    display: flex;
-    justify-content: space-around;
-    list-style-type: none;
+.feature_list{
+    width: 87px;
     text-align: center;
-    -webkit-padding-start: 0rem;
 }
-.headUl li{
-   margin: .5rem 0;
+.feature_list img{
+    margin-left: 1rem;
 }
-.monBox{
-    height: 2rem;
-    text-align: center;
-    margin: 1rem 0 4rem;
+
+.features{
+ display: flex;
+ justify-content: space-around;
+ width: 100%;
 }
-.fontBig{
-    font-size: 22px;
-    margin-top: .5rem;
-    display: inline-block;
+.feature_list p{
+    font-size: 17px;
+    color: black;
 }
-.monFont{
-    font-size: 24px !important;
-    display: block;
-    margin-bottom: 1rem;
+.max_borrow{
+    font-size: 17px;
+    color: black;
 }
-.contBox{
-    overflow-x: hidden;
-    overflow-y:scroll; 
-    width: 100%;
-    height: auto;
+.max_money{
+    font-size: 42px;
+    color: black;
 }
-.contBox::-webkit-scrollbar{
-    display: none;
+
+.ava_borrow{
+    font-size: 17px;
+    color: black;
 }
-.orgColo{
-    color: #FFA853;
+.ava_money{
+    font-size: 42px;
+    color: black;
 }
-.ta{
-    margin-left: 5%;
-}
-.manBox{background-color: #fff;margin: 1rem 0;}
-.querBtnBox{
-    border-top: 1px solid #E6E6E6;
-    height: 4rem;
-    width: 100%;
-    position: relative;
-    line-height: 4rem;
-}
-.dengImgBox{
-    border-top: 1px solid #E6E6E6;
-    height: 4rem;
-    width: 100%;
-    position: relative;
-    margin-top: .5rem;
-}
-.querBtn{
+
+
+#check{
     position: absolute;
-    right: 2rem;
-    top: 10%;
-    background: linear-gradient(to right,#FF9E5A,#FFA853);
-    color: #fff;
-    border-radius: 10rem;
-    height: 2.5rem;
-    margin-top: .5rem;
-    padding: 0 1.5rem;
+    margin: 0 auto;
+    width: 100%;
+    top: 50%;
+    margin-top: -30%;
+    // height: 100%;
+    // padding: 10px 35px;
 }
-.manUl{
-    display: flex;
-    justify-content: space-around;
-    list-style-type: none;
-    -webkit-padding-start: 0rem;
-    -webkit-margin-before: 0em;
-    -webkit-margin-after: 0em;
-    line-height: 1.5rem;
-}
-p{
-    -webkit-margin-before: .4em;
-    -webkit-margin-after: 0em;
-    font-size: 12px;
-}
-.shuBox{
-    height: 3rem;
-    width: 1px;
-    background-color: #ffa853;
-    margin-top: 1.5rem;
-}
-.bor{
-    border-bottom:1px solid #FFA853;
-    padding-bottom: .35rem;
-    color: #FFA853;
-}
-.loan{
-    padding: .5rem 0;
-    background-color: #ffffff;
-}
-.querImg{
-    height: 2.7rem;
-}
-.dBox{
+.ad_wrap{
     position: absolute;
-    right: 2rem;
-    top: 0.7rem;
+    background: black;
+    width: 100%;
+    height: 200%;
+    top: -400px;
+    opacity: 0.3;
+    z-index: 11;
 }
-.qu{
+.adv{
     position: relative;
-    top: -10px;
+    margin: 0 auto;
+    z-index: 15;
 }
+.adv_close{
+    position: absolute;
+    z-index: 15;
+    float: right;
+    top: 13px;
+}
+.checking{
+    margin-top: 40px;
+}
+// .advertise{
+//     background: black;
+//     width: 100%;
+//     height: 200%;
+//     top: -400px;
+//     z-index: 11;
+//     opacity: 0.3;
+//     position: absolute;
+//     margin: 0 auto;
+//     padding: 0 !important;
+// }
 
 
 
-
-
-
-
-
-
-
-
-
-ion-refresher-content{
-    background-color: #EEEFEF !important;
+@media screen and (max-width:320px){
+    .home_header .tip{
+        font-size:14px;
+    }
 }
-.scroll-content{
-    background-color: #EEEFEF !important;
-    overflow-y:scroll;
+@media screen and (max-width:375px) and (min-width:321px){
+    .torepay{
+        top: 60%;
+    }
 }
-.header-md::after{
-    background:none;
-}
-.toolbar-background{
-background: #fff !important;
-}
-.toolbar-ios .segment-button{
-    max-width: 46%;
-}
-//按钮
-.button-md-danger,.button-ios-danger{
-    background-color: #FFA853;
-}
-.button-md-danger.activated{
-    background-color: #FFA853;
-}
-.button-ios-danger.activated{
-    background-color: #FFA853;
-}
-.button-ios,.button-md {
-    border-radius: 4rem;
-    height: 2.5em;
-    background-color: #FFA853;
-    margin: 0.4rem 20%;
-    padding: 0 27%;
-}
-.segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
-    border-color: #FFA853;
-}
-.segment-md .segment-button{
-    color: #FFA853;
-}
-.segment-ios .segment-button.segment-activated{
-    border-color: #Fff !important;
-    border-bottom: 1px solid #ffa853 !important;
-    margin-right: 0;
-    color: #ffa853 !important;
-}
-.segment-ios .segment-button.segment-activated{
-    background-color: #fff;
-}
-.segment-ios .segment-button{
-    border-color: #Fff !important;
-    color: black !important;
-}
-.segment-ios .segment-button{
-    border-bottom: none;
-}
-.segment-md .segment-button{
-    //border: none    
-}
-.segment-ios .segment-button:last-of-type{
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-.has-refresher > .scroll-content{
-    border-top: none !important;
+@media screen and (max-width:414px) and (min-width:376px){
+    .torepay{
+        top: 55%;
+    }
 }
 }
