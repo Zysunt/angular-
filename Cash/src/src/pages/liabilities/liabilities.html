@@ -1,0 +1,66 @@
+<!--
+  Generated template for the LiabilitiesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>我的征信</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+<div class="headBox">
+  <ul class="firstUl">
+    <li><strong>某某</strong><span class="maLeft">(已实名)</span></li>
+    <li><span>逾期率：{{rate}}%</span></li>
+  </ul>
+  <ul class="firstUl">
+    <li><span>待还：</span><span class="maLeft orgColo">{{daihuan}}元</span></li>
+    <li><span>待收：</span> <span class="maLeft orgColo">{{daishou}}元</span></li>
+  </ul>
+  <ul class="secondUl">
+    <li class="left"><span>总计：</span><span class="maLeft">{{total}}张</span></li>
+    <li class="right">(共<span class="orgColo">{{totalMon}}元</span>)</li>
+
+  </ul>
+  <ul class="secondUl">
+    <li class="left"><span>生效未逾：</span><span class="maLeft">{{sxwyu}}张</span></li>
+    <li class="right">(共<span class="orgColo">{{totalMon}}元</span>)</li>
+  </ul>
+  <ul class="secondUl">
+    <li class="left"><span>生效已逾：</span><span class="maLeft">{{sxyyu}}张</span></li>
+    <li class="right">(共<span class="orgColo">{{totalMon}}元</span>)</li>
+  </ul>
+  <ul class="secondUl">
+    <li class="left"><span>冻结：</span><span class="maLeft">{{dongjie}}张</span></li>
+    <li class="right">(共<span class="orgColo">{{totalMon}}元</span>)</li>
+  </ul>
+  <ul class="secondUl">
+    <li class="left"><span>核销未逾：</span><span class="maLeft">{{hxwyu}}张</span></li>
+    <li class="right">(共<span class="orgColo">{{totalMon}}元</span>)</li>
+  </ul>
+  <ul class="secondUl">
+    <li class="left"><span>核销已逾：</span><span class="maLeft">{{hxyyu}}张</span></li>
+    <li class="right">(共<span class="orgColo">{{totalMon}}元</span>)</li>
+  </ul>
+  <ul class="secondUl">
+    <li class="left"><span>申述：</span><span class="maLeft">{{shensu}}张</span></li>
+    <li class="right">(共<span class="orgColo">{{totalMon}}元</span>)</li>
+  </ul>
+  <p class="record">借款记录：</p>
+  <ul class="thirdUl">
+    <li style="margin-left:1rem"><span>跟{{name}}借款</span><span class="maLeft">100000元</span></li>
+    <li style="margin-right:1rem"><span>{{startTime}}至{{endTime}}</span></li>
+  </ul>
+  <ul class="thirdUl">
+    <li style="margin-left:1rem"><span>跟{{name}}借款</span><span class="maLeft">100000元</span></li>
+    <li><span class="red">逾期{{yuqi}}天</span></li>
+    <li style="margin-right:1rem"><span>{{startTime}}至{{endTime}}</span></li>
+  </ul>
+</div>
+</ion-content>
